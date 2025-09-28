@@ -1,0 +1,13 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+build/
+.DS_Store
+npm-debug.log
+
+# VSCode
+.vscode/
