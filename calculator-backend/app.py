@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app, origins=["https://simplecalculatorarithmetic.netlify.app", "http://localhost:3001"])
 
 # 4. Define the API endpoint
-@app.route('/calculate', methods=['POST'])
+@app.route('/calculate', methods=['POST', 'OPTIONS'])
 def calculate():
     data = request.get_json()
     if 'expression' not in data:
