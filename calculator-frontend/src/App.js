@@ -5,7 +5,9 @@ function App() {
   const [display, setDisplay] = useState('');
 
   const handleButtonClick = (value) => {
-    setDisplay(display + value);
+    if (display.length < 12) {
+      setDisplay(display + value);
+    }
   };
 
   const handleClear = () => {
@@ -23,7 +25,12 @@ function App() {
       const data = await response.json();
 
       if (response.ok) {
-        setDisplay(String(data.result));
+        // Limit result to 12 digits (including decimal)
+        let resultStr = String(data.result);
+        if (resultStr.length > 12) {
+          resultStr = Number(data.result).toPrecision(12);
+        }
+        setDisplay(resultStr);
       } else {
         setDisplay(data.error || 'Error');
       }
